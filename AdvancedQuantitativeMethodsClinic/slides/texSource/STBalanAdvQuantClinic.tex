@@ -15,6 +15,14 @@
 \usepackage{datetime}
 \newdate{date}{03}{08}{2015}
 
+\usepackage{verbatim}
+\usepackage{tikz}
+%\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{shapes,arrows,shadows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [ellipse, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
 \title{Advanced Quantitative Methods Clinic}
 \subtitle{Master’s in Sustainability Leadership,\\
 Cambridge Institute for Sustainability Leadership}
@@ -89,7 +97,13 @@ University College London}
         %
         \column{0.5\textwidth}
         \begin{block}{}
-            \alert{\huge A picture is worth a thousand words}
+            %\alert{\huge A picture is worth a thousand words}
+            \begin{figure}
+                \begin{center}
+                    \includegraphics[scale=0.2]{img/121236_NewPieCharts720.png}
+                    %http://map.gsfc.nasa.gov/universe/uni_matter.html
+                \end{center}
+            \end{figure}
         \end{block}
         %
     \end{columns}
@@ -99,7 +113,7 @@ University College London}
     \frametitle{Data visualisation: Examples}
     \begin{itemize}
         \item We have several examples in the repository.
-        \item Please follow the instructions in \url{blalala}.
+        \item Please follow the instructions in \url{https://github.com/tbs1980/CISLQuantWorkshop/tree/master/AdvancedQuantitativeMethodsClinic}.
         \item Try to finish the first example.
         \item We have 15 mins for this session.
         \item Get your hands dirty!
@@ -144,6 +158,10 @@ University College London}
     \end{columns}
 \end{frame}
 
+%
+% TODO MORE SLIDES ON THE DEFINITIONS
+%
+
 \begin{frame}
     \frametitle{Freqency distributions}
     \begin{columns}
@@ -152,7 +170,7 @@ University College London}
             \begin{itemize}
                 \item Size
                 \item Range
-                \item Bins
+                \item Bins-size
                 \item Normalisation
             \end{itemize}
         \end{block}
@@ -175,9 +193,15 @@ University College London}
         \column{0.5\textwidth}
         \begin{block}{How to characterise a distribution?}
             \begin{itemize}
-                \item Mean, median and mode
                 \item \alert{What is a measure of central tendency?}
+                \item Mean, median and mode
             \end{itemize}
+            \smallskip
+            The mean $\mu$ of samples $\{x_1,x_2,\cdots,x_n\}$ can be computed
+            as
+            \begin{equation}
+                \mu = \frac{\sum_i x_i}{\sum_i}
+            \end{equation}
         \end{block}
         %
         \column{0.5\textwidth}
@@ -202,6 +226,11 @@ University College London}
                 \item Vairance and standard deviation
                 \item Population and samples
             \end{itemize}
+            \smallskip
+            The (biased) samples variance is defined as
+            \begin{equation}
+                \sigma^2 = \frac{\sum_i (x_i - \mu)^2}{\sum_i}
+            \end{equation}
         \end{block}
         %
         \column{0.5\textwidth}
@@ -219,7 +248,7 @@ University College London}
 \begin{frame}
     \frametitle{Examples/Discussion}
     \begin{itemize}
-        \item Examples can be found at \url{blablalbla}
+        \item Examples can be found at \url{https://github.com/tbs1980/CISLQuantWorkshop/tree/master/AdvancedQuantitativeMethodsClinic/examples}
         \item Use the rest of the time for examples/discussion.
     \end{itemize}
 \end{frame}
@@ -229,15 +258,15 @@ University College London}
 \begin{frame}
     \frametitle{Inferential statistics}
     \begin{itemize}
-        \item Probability fundamentals
+        \item Probability
         \item The Normal distribution
         \item Sample means and their distribution
-        \item Hypothesis testing
+        \item Introduction to hypothesis testing
     \end{itemize}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Probability fundamentals}
+    \frametitle{Probability}
     \begin{columns}
         \column{0.5\textwidth}
         \begin{block}{Frequency or degree of belief?}
@@ -245,7 +274,6 @@ University College London}
                 \item Frequency
                 \item Desired outcome
                 \item Random sample
-                \item Role of proability in inferential statistics
             \end{itemize}
         \end{block}
         %
@@ -261,6 +289,31 @@ University College London}
     \end{columns}
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{Role of Probability}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item What kind of samples are likeliy to obtained from the population?
+            \item What can we say about the population given a sample?
+        \end{itemize}
+        \column{0.5\textwidth}
+        \begin{figure}
+            \begin{tikzpicture}[node distance=2cm]
+                \node (pop) [startstop] {Population};
+                \node (prob) [io,below of= pop] {Probability / Inference};
+                \node (samp) [startstop,below of= prob] {Sample};
+                \draw [arrow] (pop) -- (prob);
+                \draw [arrow] (prob) -- (samp);
+                \draw [arrow] (samp) -- (prob);
+                \draw [arrow] (prob) -- (pop);
+            \end{tikzpicture}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+
 \begin{frame}
     \frametitle{The Normal distribution}
     \begin{columns}
@@ -270,7 +323,13 @@ University College London}
                 \item Mean $\mu$
                 \item Standard deviation $\sigma$
                 \item \alert{Why is it important?}
+                \item Distribution of sample means
             \end{itemize}
+            \smallskip
+            \begin{equation}
+                \Pr(x|\mu,\sigma)  = \frac{1}{\sigma\sqrt{2\pi}}
+                    \exp\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right)
+            \end{equation}
         \end{block}
         %
         \column{0.5\textwidth}
@@ -291,7 +350,7 @@ University College London}
         \column{0.5\textwidth}
         \begin{block}{Characteristics}
             \begin{itemize}
-                \item Recap: Samples and populations
+
                 \item Sampling error
                 \item Distribution of sample means
                 \item Expected value
@@ -338,6 +397,85 @@ University College London}
             \end{figure}
         \end{block}
     \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Logic behind hypothesis testing}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{block}{Questions}
+            \begin{itemize}
+                \item Can we observe meaningful patterns in the data
+                \item Are the findings statistically significant?
+                \item Does the model adeqately describe the data?
+                \item Is there evidence for an alternative hypothesis?
+            \end{itemize}
+        \end{block}
+        %
+        \column{0.5\textwidth}
+        \begin{block}{}
+            \begin{figure}
+                \scalebox{0.7}
+                {
+                    \begin{tikzpicture}
+                        \def \n {2}
+                        \def \radius {3cm}
+                        \def \margin {6}
+                        \def \s {1}
+                        \node[draw, circle] at ({360/\n * (\s - 1)}:\radius) {Model};
+                            \draw[->, >=latex] ({360/\n * (\s - 1)+\margin}:\radius)
+                                arc ({360/\n * (\s - 1)+\margin}:{360/\n * (\s)-\margin}:\radius);
+                        \def \s {2}
+                        \node[draw, circle] at ({360/\n * (\s - 1)}:\radius) {Data};
+                            \draw[->, >=latex] ({360/\n * (\s - 1)+\margin}:\radius)
+                                arc ({360/\n * (\s - 1)+\margin}:{360/\n * (\s)-\margin}:\radius);
+                    \end{tikzpicture}
+                }
+            \end{figure}
+        \end{block}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{hypothesis testing by comparing distributions}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{block}{Questions}
+            \begin{itemize}
+                \item Known characterstics of a population
+                \item Selected sample for research
+                \item Characterstics of the sample after experiment
+                \item How do they compare?
+            \end{itemize}
+        \end{block}
+        %
+        \column{0.5\textwidth}
+        \begin{block}{}
+            \begin{figure}
+                \scalebox{0.7}
+                {
+                    \begin{tikzpicture}
+                        \node[draw, fill=red!20, rectangle, align=left,
+                            inner sep=0.5ex, font=\sffamily]
+                            at (0,0) { e \\ x \\ p \\ e \\ r \\ i \\ m \\ e \\ n \\ t };
+                        \node[draw, fill=red!20,circle,align=center,inner sep=0.5ex,font=\sffamily]
+                            at (2,2) {unknown \\ population};
+                        \node[draw,fill=red!20,rectangle,align=center,inner sep=0.5ex,font=\sffamily]
+                            at (2,-2) {experimented \\ sample};
+                        \node[draw, fill=blue!20,circle,,align=center,inner sep=0.5ex,font=\sffamily]
+                            at (-2,2) {known \\ population};
+                        \node[draw,fill=blue!20,rectangle,align=center,
+                            minimum height=2.5em,minimum width=4.5em,inner sep=0.5ex,font=\sffamily]
+                            at (-2,-2) {sample};
+                    \end{tikzpicture}
+                }
+            \end{figure}
+        \end{block}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Comparing distributions statistically}
 \end{frame}
 
 \begin{frame}
