@@ -528,13 +528,18 @@ University College London}
     \frametitle{hypothesis testing by comparing distributions}
     \begin{columns}
         \column{0.5\textwidth}
-        \begin{block}{Questions}
+        \begin{block}{}
             \begin{itemize}
                 \item Known characterstics of a population
                 \item Selected sample for research
                 \item Characterstics of the sample after experiment
                 \item How do they compare?
             \end{itemize}
+            \smallskip
+            We deifne  $z$-score as
+            \begin{equation}
+                z = \frac{M-\mu}{\sigma_M}
+            \end{equation}
         \end{block}
         %
         \column{0.5\textwidth}
@@ -596,6 +601,7 @@ University College London}
 \begin{frame}
     \frametitle{Examples/Discussion}
     \begin{itemize}
+        \item \alert{What if the $H_0$ is false?}
         \item \alert{How accurate is the $\sigma$ invariance assumption?}
         \item \alert{How will we choose the level of significance?}
         \item Examples can be found at \url{https://github.com/tbs1980/CISLQuantWorkshop/tree/master/AdvancedQuantitativeMethodsClinic/examples}
@@ -609,8 +615,86 @@ University College London}
     \frametitle{Inferences about Population Means}
     \begin{itemize}
         \item $t$-statistic
-        \item Analysis of Variacne (ANOVA)
+        \item ANalysis Of VAriacne (ANOVA)
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction to $t$-statistic}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{block}{Motivation}
+            \begin{itemize}
+                \item Population $\sigma$ unknown
+                \item How can we compare means?
+                \item Estimated standard error, $s_M$
+                \item Degrees of freedom, $df$
+            \end{itemize}
+            \smallskip
+            We define the $t$-statistics as
+            \begin{equation}
+                t = \frac{M-\mu}{s_M}
+            \end{equation}
+            and percentage of variance as
+            \begin{equation}
+                r^2 = \frac{t^2}{t^2+df}
+            \end{equation}
+        \end{block}
+        \column{0.5\textwidth}
+        \begin{block}{}
+            \begin{figure}
+                \begin{center}
+                    \includegraphics[scale=0.17]{img/2289604_orig.png}
+                    % http://www.stats4stem.org/uploads/1/7/6/7/1767713/2289604_orig.png
+                \end{center}
+            \end{figure}
+        \end{block}
+
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Comparing two sets of data}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{block}{How do we compare?}
+            \begin{itemize}
+                \item Are there differences between population means?
+            \end{itemize}
+        \end{block}
+        {\small
+            \begin{align}
+                t & = \frac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{(M_1-M_2)}} \\
+                s_{(M_1-M_2)} &= \sqrt{\frac{s_p^2}{n_1}+\frac{s_p^2}{n_2}} \\
+                s_p & = \frac{SS_1 + SS_2}{df} \\
+                df & = df_1 + df_2
+            \end{align}
+        }
+        \column{0.5\textwidth}
+        \begin{block}{}
+            \begin{figure}
+                \scalebox{0.7}
+                {
+                    \begin{tikzpicture}
+                        \node[draw, fill=red!20,circle,align=center,inner sep=0.5ex,font=\sffamily]
+                            at (2,2) {Population-B \\ Method-B \\ $\mu =?$};
+                        \node[draw,fill=red!20,rectangle,align=center,
+                            minimum height=5.5em,minimum width=6em,inner sep=0.5ex,font=\sffamily]
+                            at (2,-2) {sample \\ B};
+                        \node[draw, fill=blue!20,circle,,align=center,inner sep=0.5ex,font=\sffamily]
+                            at (-2,2) {Population-A \\ Method-A \\ $\mu =?$};
+                        \node[draw,fill=blue!20,rectangle,align=center,
+                            minimum height=5.5em,minimum width=6em,inner sep=0.5ex,font=\sffamily]
+                            at (-2,-2) {sample \\ A};
+                    \end{tikzpicture}
+                }
+            \end{figure}
+        \end{block}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{ANlysis Of VAriacne (ANOVA)}
 \end{frame}
 
 \section{Regression}
