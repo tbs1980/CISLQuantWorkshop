@@ -20,7 +20,8 @@
 %\usetikzlibrary{shapes.geometric, arrows}
 \usetikzlibrary{shapes,arrows,shadows}
 \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
-\tikzstyle{io} = [ellipse, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{io} = [ellipse, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30,
+,inner sep=0.5ex,font=\sffamily]
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
 \newcounter{cnt}
@@ -695,6 +696,126 @@ University College London}
 
 \begin{frame}
     \frametitle{ANlysis Of VAriacne (ANOVA)}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{block}{}
+            \begin{itemize}
+                \item Different samples for different experiments
+                \item Are the results statistically different?
+                \item How to differentiate between random and systematic variations?
+                \item $H_0:\mu_1 = \mu_2 = \mu_3$
+                \item $H_1:$ at least one mean differences
+            \end{itemize}
+        \end{block}
+        \column{0.5\textwidth}
+        \begin{block}{}
+            \begin{figure}
+                \scalebox{0.6}
+                {
+                    \begin{tikzpicture}
+                        \node[draw, fill=red!20,circle,align=center,inner sep=0.5ex,font=\sffamily]
+                            at (-3,2) {Population-1 \\ Experiment-1 \\ $\mu_1 =?$};
+                        \node[draw, fill=blue!20,circle,align=center,inner sep=0.5ex,font=\sffamily]
+                            at (0,2) {Population-2 \\ Experiment-2 \\ $\mu_2 =?$};
+                        \node[draw, fill=yellow!20,circle,align=center,inner sep=0.5ex,font=\sffamily]
+                            at (3,2) {Population-3 \\ Experiment-3 \\ $\mu_3 =?$};
+                        \node[draw,fill=red!20,rectangle,align=center,minimum height=5.5em,
+                            minimum width=6em,inner sep=0.5ex,font=\sffamily]
+                            at (-3,-2) {sample-1 \\ n=15 \\ M=23.1 \\ SS=114};
+                        \node[draw,fill=blue!20,rectangle,align=center,minimum height=5.5em,
+                            minimum width=6em,inner sep=0.5ex,font=\sffamily]
+                            at (0,-2) {sample-2 \\ n=15 \\ M=28.5 \\ SS=130};
+                        \node[draw,fill=yellow!20,rectangle,align=center,minimum height=5.5em,
+                            minimum width=6em,inner sep=0.5ex,font=\sffamily]
+                            at (3,-2) {sample-3 \\ n=15 \\ M=20.8 \\ SS=101};
+                    \end{tikzpicture}
+                }
+            \end{figure}
+        \end{block}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{ANOVA: The fundamental concept}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{block}{Measuring variability}
+            Recap: we can write the $t$-statistic as
+            \begin{equation}
+                \small
+                t = \frac{\text{difference between sample means}}{\text{standard error}}
+            \end{equation}
+            We define $F$-statistic as
+            \begin{equation}
+                \small
+                F = \frac{\text{variance between sample means}}{\text{intrinsic variance}}
+            \end{equation}
+            \begin{itemize}
+                \item systematic effects
+                \item random, unsystematic factors
+            \end{itemize}
+        \end{block}
+        \column{0.5\textwidth}
+        \begin{block}{}
+            \begin{figure}
+                \scalebox{0.7}
+                {
+                    \begin{tikzpicture}
+                        \node[draw,fill=blue!20,rectangle,align=center,minimum height=5.5em,
+                            minimum width=6em,inner sep=0.5ex,font=\sffamily]
+                            at (0,2) {Total \\ variability};
+                        \node[draw,fill=yellow!20,rectangle,align=center,minimum height=5.5em,
+                            minimum width=6em,inner sep=0.5ex,font=\sffamily]
+                            at (-2,-2) {Between\\samples\\variance};
+                        \node[draw,fill=red!20,rectangle,align=center,minimum height=5.5em,
+                            minimum width=6em,inner sep=0.5ex,font=\sffamily]
+                            at (2,-2) {Within\\samples\\variance};
+                    \end{tikzpicture}
+                }
+            \end{figure}
+        \end{block}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Computing ANOVA}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{block}{formulae}
+            \begin{align}
+                SS & = \sum x^2 - \frac{(\sum x)^2}{N} \\
+                s^2 & = \frac{SS}{df} \\
+                F & = \frac{s^2_{\mathsf{between}}}{s^2_{\mathsf{within}}}
+            \end{align}
+        \end{block}
+        \column{0.5\textwidth}
+        \begin{block}{}
+            \begin{figure}
+                \scalebox{0.7}
+                {
+                    \begin{tikzpicture}
+                        \node[draw,fill=blue!20,rectangle,align=center,minimum height=5.5em,
+                            minimum width=6em,inner sep=0.5ex,font=\sffamily]
+                            at (0,2) {Total \\ $SS = \sum x^2 - \frac{G}{N}x$ \\ $df = N-1$};
+                        \node[draw,fill=yellow!20,rectangle,align=center,minimum height=5.5em,
+                            minimum width=6em,inner sep=0.5ex,font=\sffamily]
+                            at (-2,-2) {Between\\$SS = \sum\frac{T^2}{n} - \frac{G}{N}x$\\$df = k-1$};
+                        \node[draw,fill=red!20,rectangle,align=center,minimum height=5.5em,
+                            minimum width=6em,inner sep=0.5ex,font=\sffamily]
+                            at (2,-2) {Within\\intrinsic $\sum SS$\\$df = N-k$};
+                    \end{tikzpicture}
+                }
+            \end{figure}
+        \end{block}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Examples/Discussion}
+    \begin{itemize}
+        \item Link to examples \url{https://github.com/tbs1980/CISLQuantWorkshop/tree/master/AdvancedQuantitativeMethodsClinic/examples}
+        \item Use the rest of the time for examples/discussion.
+    \end{itemize}
 \end{frame}
 
 \section{Regression}
@@ -702,11 +823,74 @@ University College London}
 \begin{frame}
     \frametitle{Regression}
     \begin{itemize}
-        \item Parametric
         \item Correlation
-        \item Non-parametric
+        \item Parametric-regression
+        \item $\chi^2$-test
     \end{itemize}
 \end{frame}
+
+\begin{frame}
+    \frametitle{Correlation}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{block}{Covariability}
+            \begin{itemize}
+                \item \alert{linear} relationship between two variables $x$ and $y$
+                \item positive and negative
+            \end{itemize}
+            Pearson correlation is defined as
+            \begin{equation}
+                \small
+                r = \frac{\text{covariability of X and Y}}{\text{individual variability of X and Y}}
+            \end{equation}
+            \begin{align}
+                SP_{xy} & = \sum xy - \frac{\sum x \sum y}{n} \\
+                r &= \frac{SP_{xy}}{\sqrt{SP_{xx}SP_{yy}}}
+            \end{align}
+        \end{block}
+        \column{0.5\textwidth}
+        \begin{block}{Visualisation}
+            \begin{figure}
+                \begin{center}
+                    \includegraphics[scale=0.2]{img/correlationcoefficient.png}
+                    % https://statsmethods.wordpress.com/2013/05/10/pearson-correlation-coefficient-r/
+                \end{center}
+            \end{figure}
+            \begin{itemize}
+                \item \alert{outliers}
+                \item \alert{correlation and causation}
+            \end{itemize}
+        \end{block}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Regression}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{block}{Basics}
+            \begin{itemize}
+                \item Model Vs data
+                \item Predicted Vs observed
+                \item Parametric Vs non-parametric
+                \item Signal and noise
+                \item Residuals
+                \item $y = f(x) + n$
+                \item least-squares
+            \end{itemize}
+        \end{block}
+        \column{0.5\textwidth}
+        \begin{block}{}
+            \begin{figure}
+                \begin{center}
+                    \includegraphics[scale=0.2]{img/regression.png}
+                    % http://plot1.micw.eu/uploads/Main/regression.png
+                \end{center}
+            \end{figure}
+        \end{block}
+    \end{columns}
+\end{frame}
+
 
 \section{Discussion}
 
