@@ -6,7 +6,8 @@ shown below
 
 ![alcohol_v_tobacco](alcohol_v_tobacco.png)
 
-Results from regression using [Pandas](http://pandas.pydata.org/) and [Statsmodels](http://statsmodels.sourceforge.net/)
+Results from regression using [Pandas](http://pandas.pydata.org/) and [Statsmodels](http://statsmodels.sourceforge.net/). The code in python can be
+found [here](../code/regression/regression.py) and the corresponding data [here](../data/alcohol_v_tobacco.csv). The summary is shown below.
 
                                 OLS Regression Results
     ==============================================================================
