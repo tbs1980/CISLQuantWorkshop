@@ -115,7 +115,8 @@ Cambridge Institute for Sustainability Leadership}
 \date{\displaydate{date}}
 \author{Sreekumar Thaithara Balan}
 \institute{Department of Physics and Astronomy,\\
-University College London}
+University College London\\
+sbalan@star.ucl.ac.uk}
 
 \begin{document}
 
@@ -138,6 +139,12 @@ University College London}
 
 \section{Software for data analysis}
 
+\begin{frame}
+    \frametitle{Repository}
+    Supplementary materials can found at \\
+    \url{https://github.com/tbs1980/CISLQuantWorkshop}
+\end{frame}
+
 \begin{frame}[fragile]
     \frametitle{Software for data analysis}
     A large list can be found in \href{https://en.wikipedia.org/wiki/List_of_statistical_packages}{\texttt{Wikipedia}}.
@@ -146,22 +153,24 @@ University College London}
         \item \texttt{Python}, \url{https://www.python.org/} %{\texttt{Python}}
         \item \texttt{R}, \url{https://cran.r-project.org/}%{\texttt{R}}
         \item \texttt{Excel}, \url{https://products.office.com/en-us/excel}%{\texttt{Excel}}
+        \item \texttt{SPSS}, \url{http://www-01.ibm.com/software/analytics/spss/}
     \end{itemize}
-    I will demostrate the examples using \texttt{Python}. If you have no prior
+    I will demonstrate the examples using \texttt{Python}. If you have no prior
     experience, no problem, there will be plenty of help.
 \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{Software set-up}
-    We need at least one of the statistical softwares mentioned in the
+    We need at least one of the statistical software mentioned in the
     previous slide. Please follow the instructions below
     \begin{itemize}
         \item \url{http://docs.continuum.io/anaconda/install}%{\texttt{Python}}
         \item \url{https://cran.r-project.org/}%{\texttt{R}}
         \item \url{https://products.office.com/en-us/excel}%{\texttt{Excel}}
+        \item \url{http://www-01.ibm.com/software/analytics/spss/}
     \end{itemize}
     \smallskip
-    \alert{Has everyone installed one of the above?}
+    %\alert{Has everyone installed one of the above?}
 \end{frame}
 
 \section{Data visualisation}
@@ -175,7 +184,7 @@ University College London}
                 \item{bar-charts}
                 \item{histograms}
                 \item{scatter-plots}
-                \item{errobars}
+                \item{error-bars}
                 \item{pie-charts}
                 \item{many more!}
             \end{itemize}
@@ -189,10 +198,12 @@ University College London}
                     \includegraphics[scale=0.2]{img/121236_NewPieCharts720.png}
                     %http://map.gsfc.nasa.gov/universe/uni_matter.html
                 \end{center}
+                %\footnote{\tiny{\url{http://map.gsfc.nasa.gov/universe/uni_matter.html}}}
             \end{figure}
         \end{block}
         %
     \end{columns}
+    %Figure from \footnote{\tiny{\url{http://map.gsfc.nasa.gov/universe/uni_matter.html}}}
 \end{frame}
 
 \begin{frame}
@@ -200,9 +211,11 @@ University College London}
     \begin{itemize}
         \item We have several examples in the repository.
         \item Please follow the instructions in \url{https://github.com/tbs1980/CISLQuantWorkshop/tree/master/AdvancedQuantitativeMethodsClinic}.
-        \item Try to finish the first example.
-        \item We have 15 mins for this session.
-        \item Get your hands dirty!
+        \item \alert{clustering}
+        \item \alert{outliers}
+        \item \alert{normalisation}
+        %\item We have 15 mins for this session.
+        %\item Get your hands dirty!
     \end{itemize}
 \end{frame}
 
@@ -212,7 +225,7 @@ University College London}
     \frametitle{Descriptive statistics}
     \begin{itemize}
         \item Definitions
-        \item Freqency distributions
+        \item Frequency distributions
         \item Central tendency and variability
     \end{itemize}
 \end{frame}
@@ -286,7 +299,7 @@ University College London}
             The mean $\mu$ of samples $\{x_1,x_2,\cdots,x_n\}$ can be computed
             as
             \begin{equation}
-                \mu = \frac{\sum_i x_i}{\sum_i}
+                \mu = \frac{\sum_i x_i}{n}
             \end{equation}
         \end{block}
         %
@@ -309,13 +322,17 @@ University College London}
         \begin{block}{How to measure variations?}
             \begin{itemize}
                 \item \alert{Are you a good shooter?}
-                \item Vairance and standard deviation
+                \item Variance and standard deviation
                 \item Population and samples
             \end{itemize}
             \smallskip
             The (biased) samples variance is defined as
             \begin{equation}
-                \sigma^2 = \frac{\sum_i (x_i - \mu)^2}{\sum_i}
+                \sigma^2 = \frac{\sum_i (x_i - \mu)^2}{n}
+            \end{equation}
+            We also define sums of squares $SS$ as
+            \begin{equation}
+                SS = \sum x^2
             \end{equation}
         \end{block}
         %
@@ -384,7 +401,7 @@ University College London}
     \begin{columns}
         \column{0.5\textwidth}
         \begin{itemize}
-            \item What kind of samples are likeliy to obtained from the population?
+            \item What kind of samples are likely to obtained from the population?
             \item What can we say about the population given a sample?
         \end{itemize}
         \column{0.5\textwidth}
@@ -446,6 +463,10 @@ University College London}
                 \item Standard error
                 \item Law of large numbers
             \end{itemize}
+            The standard error is defined as
+            \begin{equation}
+                \sigma_M = \frac{\sigma}{n}
+            \end{equation}
         \end{block}
         %
         \column{0.5\textwidth}
@@ -468,10 +489,10 @@ University College London}
             \begin{itemize}
                 \item Known versus unknown
                 \item Null versus alternative hypothesis
-                \item Decision crieteria
+                \item Decision criteria
                 \item Level of significance
                 \item Critical region
-                \item Uncertanity and errors
+                \item Uncertainty and errors
                 \item Statistical significance
             \end{itemize}
         \end{block}
@@ -496,7 +517,7 @@ University College London}
             \begin{itemize}
                 \item Can we observe meaningful patterns in the data
                 \item Are the findings statistically significant?
-                \item Does the model adeqately describe the data?
+                \item Does the model adequately describe the data?
                 \item Is there evidence for an alternative hypothesis?
             \end{itemize}
         \end{block}
@@ -531,9 +552,9 @@ University College London}
         \column{0.5\textwidth}
         \begin{block}{}
             \begin{itemize}
-                \item Known characterstics of a population
+                \item Known characteristics of a population
                 \item Selected sample for research
-                \item Characterstics of the sample after experiment
+                \item Characteristics of the sample after experiment
                 \item How do they compare?
             \end{itemize}
             \smallskip
@@ -811,6 +832,15 @@ University College London}
 \end{frame}
 
 \begin{frame}
+    \frametitle{F-statistic}
+    \begin{figure}
+        \begin{centering}
+            \includegraphics[scale=0.7]{img/ftest.png}
+        \end{centering}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
     \frametitle{Examples/Discussion}
     \begin{itemize}
         \item Link to examples \url{https://github.com/tbs1980/CISLQuantWorkshop/tree/master/AdvancedQuantitativeMethodsClinic/examples}
@@ -841,11 +871,11 @@ University College London}
             Pearson correlation is defined as
             \begin{equation}
                 \small
-                r = \frac{\text{covariability of X and Y}}{\text{individual variability of X and Y}}
+                r = \frac{\text{co-variability of X and Y}}{\text{individual variability of X and Y}}
             \end{equation}
             \begin{align}
                 SP_{xy} & = \sum xy - \frac{\sum x \sum y}{n} \\
-                r &= \frac{SP_{xy}}{\sqrt{SP_{xx}SP_{yy}}}
+                r &= \frac{S_{xy}}{\sqrt{SS_{xx}SS_{yy}}}
             \end{align}
         \end{block}
         \column{0.5\textwidth}
@@ -914,7 +944,7 @@ University College London}
         \begin{block}{}
             \begin{figure}
                 \begin{center}
-                    \includegraphics[scale=0.4]{img/Figure5_10.jpg}
+                    \includegraphics[scale=0.4]{img/Figure5_10.png}
                     % http://chemwiki.ucdavis.edu/Analytical_Chemistry/Analytical_Chemistry_2.0/05_Standardizing_Analytical_Methods/5D%3A_Linear_Regression_and_Calibration_Curves
                 \end{center}
             \end{figure}
@@ -932,7 +962,7 @@ University College London}
             \small
             \begin{align}
                 \text{predicted variability} &= r^2 SS_{yy} \\
-                \text{unpredicted variabiltiy} &= (1-r^2) SS_{yy}
+                \text{unpredicted variability} &= (1-r^2) SS_{yy}
             \end{align}
             Use $F$-test for significance test
             \begin{align}
@@ -968,7 +998,7 @@ University College London}
     \frametitle{$\chi^2$ statistic}
     \begin{columns}
         \column{0.5\textwidth}
-        \begin{block}{Goodnes of fit}
+        \begin{block}{Goodness of fit}
             \begin{itemize}
                 \item How good is your model?
                 \item observed and expected frequency
@@ -983,7 +1013,7 @@ University College London}
         \begin{block}{}
             \begin{figure}
                 \begin{center}
-                    \includegraphics[scale=0.4]{img/chi2.jpg}
+                    \includegraphics[scale=0.06]{img/chi2.png}
                     % http://statwiki.ucdavis.edu/Under_Construction/Chi-Square_Tests_and_F-Tests/11.1_Chi-Square_Tests_for_Independence
                 \end{center}
             \end{figure}
@@ -1014,8 +1044,8 @@ University College London}
             large scatter & no correlation $r=0.001$ \\
             treatment has an impact & the hypothesis tests shows that \\
             cannot be sure & ANOVA shows that \\
-            we can confident & the probaility oddes from $F$-test was \\
-            no differnce between methods & $t$-statistic was calculated to be \\
+            we can confident & the probability oddes from $F$-test was \\
+            no difference between methods & $t$-statistic was calculated to be \\
             \hline
         \end{tabular}
     \end{table}
@@ -1033,6 +1063,13 @@ University College London}
 
 \begin{frame}
     \frametitle{References}
+    \begin{itemize}
+        \item \alert{Gravetter and Wallnau},\emph{Statistics for the Behavioral Sciences}, 2013
+        \item \alert{Wilcox}, \emph{Introduction to Robust Estimation and Hypothesis Testing}, 2012
+        \item \alert{Grimmet}, \emph{Probability and Random Processes}, 2001
+        \item \alert{Jaynes}, \emph{Probability Theory, The Logic of Science}, 2003
+        \item \alert{Sivia and Skilling}, \emph{Data Analysis, A Bayesian Tutorial}, 2006
+    \end{itemize}
 \end{frame}
 
 
