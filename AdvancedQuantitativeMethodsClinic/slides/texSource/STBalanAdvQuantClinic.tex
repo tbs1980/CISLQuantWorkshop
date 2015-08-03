@@ -1,7 +1,7 @@
 \documentclass[10pt, compress]{beamer}
 
 \usetheme{m}
-
+\usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage[scale=2]{ccicons}
@@ -23,7 +23,7 @@
 \tikzstyle{io} = [ellipse, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30,
 ,inner sep=0.5ex,font=\sffamily]
 \tikzstyle{arrow} = [thick,->,>=stealth]
-
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
 \newcounter{cnt}
 \setcounter{cnt}{0}
 
@@ -891,11 +891,138 @@ University College London}
     \end{columns}
 \end{frame}
 
-
-\section{Discussion}
+\begin{frame}
+    \frametitle{Linear model}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{block}{Computation}
+            Linear model can be written as
+            \begin{equation}
+                y = a + bx
+            \end{equation}
+            $a$ and $b$ can be calculated as
+            \begin{align}
+                b & = \frac{SS_{yy}}{SS_{xx}} \\
+                a & = M_{y} - bM_{x}
+            \end{align}
+            The standard error is
+            \begin{equation}
+                err_{std} = \sqrt{\frac{SS_{\mathsf{residual}}}{df}} = \frac{\sum (y- \hat{y})^2}{n-2}
+            \end{equation}
+        \end{block}
+        \column{0.5\textwidth}
+        \begin{block}{}
+            \begin{figure}
+                \begin{center}
+                    \includegraphics[scale=0.4]{img/Figure5_10.jpg}
+                    % http://chemwiki.ucdavis.edu/Analytical_Chemistry/Analytical_Chemistry_2.0/05_Standardizing_Analytical_Methods/5D%3A_Linear_Regression_and_Calibration_Curves
+                \end{center}
+            \end{figure}
+        \end{block}
+    \end{columns}
+\end{frame}
 
 \begin{frame}
-    \frametitle{Discussion and Summary}
+    \frametitle{Significance test}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{block}{Definitions}
+            {
+            Related to Pearson correlation as
+            \small
+            \begin{align}
+                \text{predicted variability} &= r^2 SS_{yy} \\
+                \text{unpredicted variabiltiy} &= (1-r^2) SS_{yy}
+            \end{align}
+            Use $F$-test for significance test
+            \begin{align}
+                MS_{\mathsf{regression}} &= \frac{SS_{\mathsf{regression}}}{df_{\mathsf{regression}}} = \frac{SS_{\mathsf{regression}}}{1} \\
+                MS_{\mathsf{residual}} &= \frac{SS_{\mathsf{residual}}}{df_{\mathsf{residual}}} = \frac{SS_{\mathsf{residual}}}{n-2} \\
+                F & = \frac{MS_{\mathsf{regression}}}{MS_{\mathsf{residual}}}
+            \end{align}
+            }
+        \end{block}
+        \column{0.5\textwidth}
+        \begin{block}{ANOVA}
+            \begin{figure}
+                \scalebox{0.7}
+                {
+                    \begin{tikzpicture}
+                        \node[draw,fill=blue!20,rectangle,align=center,minimum height=5.5em,
+                            minimum width=6em,inner sep=0.5ex,font=\sffamily]
+                            at (0,2) {$SS_{yy}$\\ $df = n-1$};
+                        \node[draw,fill=yellow!20,rectangle,align=center,minimum height=5.5em,
+                            minimum width=6em,inner sep=0.5ex,font=\sffamily]
+                            at (-2,-2) {$SS_{\mathsf{regression}}$ \\ $r^2SS_{yy}$ \\$df = 1$};
+                        \node[draw,fill=red!20,rectangle,align=center,minimum height=5.5em,
+                            minimum width=6em,inner sep=0.5ex,font=\sffamily]
+                            at (2,-2) {$SS_{\mathsf{residuals}}$ \\ $(1-r^2)SS_{yy}$ \\$df = n-2$ };
+                    \end{tikzpicture}
+                }
+            \end{figure}
+        \end{block}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{$\chi^2$ statistic}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{block}{Goodnes of fit}
+            \begin{itemize}
+                \item How good is your model?
+                \item observed and expected frequency
+                \item $\chi^2$ distribution
+            \end{itemize}
+            We define the $\chi^2$ as
+            \begin{equation}
+                \chi^2 = \sum \frac{(f_o-f_e)^2}{f_e}
+            \end{equation}
+        \end{block}
+        \column{0.5\textwidth}
+        \begin{block}{}
+            \begin{figure}
+                \begin{center}
+                    \includegraphics[scale=0.4]{img/chi2.jpg}
+                    % http://statwiki.ucdavis.edu/Under_Construction/Chi-Square_Tests_and_F-Tests/11.1_Chi-Square_Tests_for_Independence
+                \end{center}
+            \end{figure}
+        \end{block}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Examples/Discussion}
+    \begin{itemize}
+        \item Link to examples \url{https://github.com/tbs1980/CISLQuantWorkshop/tree/master/AdvancedQuantitativeMethodsClinic/examples}
+        \item Use the rest of the time for examples/discussion.
+    \end{itemize}
+\end{frame}
+
+\section{Discussion and Summary}
+
+\begin{frame}
+    \frametitle{Best practices: let the data speak}
+    \begin{table}
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            $\times$ & \checkmark \\
+            \hline
+            majority respondents & 60\% of the respondents \\
+            shows large variation & sample variance is \\
+            large scatter & no correlation $r=0.001$ \\
+            treatment has an impact & the hypothesis tests shows that \\
+            cannot be sure & ANOVA shows that \\
+            we can confident & the probaility oddes from $F$-test was \\
+            no differnce between methods & $t$-statistic was calculated to be \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Summary}
     \begin{itemize}
         \item Descriptive and inferential statistics
         \item Hypotheis testing
