@@ -31,14 +31,28 @@ sbalan@star.ucl.ac.uk}
 
 \maketitle
 
+\section{Objectives}
+
+\begin{frame}[t]{Objectives}
+    \begin{itemize}
+        \item What are surveys?
+        \item Concept of sampling
+        \item Sampling error and non-sampling error
+        \item Probability and non-probability samples
+        \item Inferences from the data
+    \end{itemize}
+\end{frame}
+%--- Next Frame ---%
+
+
 \section{Outline}
 
 \begin{frame}
     \frametitle{Outline}
     \begin{itemize}
         \item Introduction to survyes
-        \item Describing the data
-        \item Making inferences from the data
+        \item Survey sampling
+        \item Describing and making inferences from the data
     \end{itemize}
 \end{frame}
 
@@ -96,18 +110,22 @@ sbalan@star.ucl.ac.uk}
     \end{block}
 \end{frame}
 
+
 \begin{frame}
     \frametitle{Terms in Survey Sampling}
+    % http://www.slideshare.net/drkellypage/pagek-marketing-researchwk61?next_slideshow=1
     \begin{columns}
         \column{0.5\textwidth}
         \begin{block}{}
             \begin{itemize}
-                \item unit, individual, element
-                \item population or universe
-                \item sample
-                \item sampling frame
+                \item population : Entire group of people about whom information
+                is required.
+                \item census : Collection of data from or about every member of
+                the population.
+                \item sample : Subset of all members of a population of interest
+                \item sampling frame : List of population elements from which
+                units to be sampled cab be selected.
                 \item sample survey
-                \item census
             \end{itemize}
         \end{block}
         \column{0.5\textwidth}
@@ -140,28 +158,80 @@ sbalan@star.ucl.ac.uk}
     \end{itemize}
 \end{frame}
 
-\begin{frame}[t]{Sampling Designs}
+\begin{frame}[t]{Developing a sampling design}
+    \begin{itemize}
+        \item Define the population of interest
+        \item Choose data collection method
+        \item Indentify sampling frame
+        \item Select Sampling method
+        \item Determine the sample size
+    \end{itemize}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Population of interest}
+    \begin{itemize}
+        \item Think about possible bases of defining a population
+        \item e.g., Geographical area, demographic (age, gender, etc.)
+        \item Do you need to apply any filter?
+    \end{itemize}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Data collection method}
+    % http://www.slideshare.net/drkellypage/pagek-marketing-researchwk61?next_slideshow=1
+    \begin{itemize}
+        \item What methods can be used to reach the population of interest?
+        \item What methods can be used to administer the survey?
+        \item What are the resource implications?
+        \item What are the implications regarding the representativess of the survey?
+    \end{itemize}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Indentify the sampling frame}
+    % http://www.slideshare.net/drkellypage/pagek-marketing-researchwk61?next_slideshow=1
+    \begin{itemize}
+        \item Listings
+        \begin{itemize}
+            \item Electoral register
+            \item Postcode address file
+            \item Telephone directory
+            \item Consumer lists
+            \item Employee lists
+        \end{itemize}
+        \item Think about
+        \begin{itemize}
+            \item Who is excluded?
+            \item How could this affect the representativeness?
+        \end{itemize}
+        \item There may by no exsisting sampling frame. You will have to formulate a plan.
+    \end{itemize}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Select a sampling method}
     % https://scholar.vt.edu/access/content/group/43c8db00-e78f-4dcd-826c-ac236fb59e24/STAT3615/Sampling%20and%20Observational%20Studies.htm
     \begin{itemize}
-        \item Poor sampling designs
+        %\item Poor sampling designs
         \item Probability Sampling
         \item Non-Probability Sampling
     \end{itemize}
 \end{frame}
 %--- Next Frame ---%
 
-\begin{frame}[t]{Poor sampling designs}
-    \begin{block}{examples}
-        \begin{itemize}
-            \item convenience sample $\Rightarrow$ bias
-            \item voluntary-response sample $\Rightarrow$ bias
-        \end{itemize}
-    \end{block}
-    \begin{block}{Bias}
-        The design of a statistical study is biased if it systematically favors certain outcomes.
-    \end{block}
+\begin{frame}[t]{Let us pause for a minute...}
+    \begin{itemize}
+        \item Research question
+        \item Population
+        \item Sampling frame
+        \item Data collection
+    \end{itemize}
+    \bigskip
+    Now we can move on to sampling designs...
 \end{frame}
 %--- Next Frame ---%
+
 
 \begin{frame}[t]{Probability Sampling}
     \begin{itemize}
@@ -183,6 +253,8 @@ sbalan@star.ucl.ac.uk}
                 \item Each unit of the population has equal chance of being included in the sample.
                 \item Every combination of $n$ units of the population has the same chance of being included in the sample of size $n$.
                 \item Usually accomplished by mixing the population and taking a sample of size $n$
+                \item requires the full list of population of interest
+                \item we may use a random number generator to pick the units
             \end{itemize}
         \end{block}
         \column{0.5\textwidth}
@@ -205,6 +277,10 @@ sbalan@star.ucl.ac.uk}
                 \item The population is divided into strata
                 \item A simple random sample is taken from each strata
                 \item e.g., U.S. by State, Cambridge Students by College
+                \item mutually exclusive and exhasutive groups
+                \item reduces the sampling error
+                \item proportional allocation
+                \item weighting the sample
             \end{itemize}
         \end{block}
         \column{0.5\textwidth}
@@ -308,28 +384,82 @@ sbalan@star.ucl.ac.uk}
         \item Your desired error level (e.g. 5\%)
         \item Your desired level of confidence (e.g. 95\%)
     \end{itemize}
-    \url{http://www.custominsight.com/articles/random-sample-calculator.asp}
+    %\url{http://www.custominsight.com/articles/random-sample-calculator.asp}
 \end{frame}
 %--- Next Frame ---%
 
-\begin{frame}[t]{Performing a Stratified Random Sample}
+%\begin{frame}[t]{Performing a Stratified Random Sample}
+%    \begin{itemize}
+%        \item Determine the size of the smallest subgroup in your population. For example, if you want to look at males vs. females and there are fewer females, then this is the group you want to look at.
+%        \item Calculate the number of people required to achieve your desired error level and level of confidence for this subgroup.
+%        \item Calculate what percentage of people that you will need to survey within this subgroup (number of people to survey divided by total subgroup size).
+%        \item Finally, calculate the number of people in each of the other subgroups that are needed to achieve this same ratio (multiply the percentage from step 3 by the size of each of the other subgroups). This is how many people you will need to survey within each group.
+%    \end{itemize}
+%\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Non-probability sampling}
     \begin{itemize}
-        \item 1.	Determine the size of the smallest subgroup in your population. For example, if you want to look at males vs. females and there are fewer females, then this is the group you want to look at.
-        \item Calculate the number of people required to achieve your desired error level and level of confidence for this subgroup.
-        \item Calculate what percentage of people that you will need to survey within this subgroup (number of people to survey divided by total subgroup size).
-        \item Finally, calculate the number of people in each of the other subgroups that are needed to achieve this same ratio (multiply the percentage from step 3 by the size of each of the other subgroups). This is how many people you will need to survey within each group.
+        \item Quota Sampling
+        \item Conveniance Sampling
+        \item Judgement Sampling
+        \item Snowball Sampling
     \end{itemize}
 \end{frame}
 %--- Next Frame ---%
 
+\begin{frame}[t]{Quota sampling}
+    % http://www.slideshare.net/drkellypage/pagek-marketing-researchwk61?next_slideshow=1
+    \begin{itemize}
+        \item Very commonly used
+        \item Population is devied into subgroups based on demographic crieteria,
+        so that propotion of sample in each subgroup mirrors the popultaion of the
+        subgroup in population.
+        \item E.g., if the population of interest is 40\% male and 60\% female,
+        the quota for the sample 500 repondents will tbe 200 males and 300 females
+        \item Differs from startified random sampling.
+        \item E.g., the demographic subroups are not necessarily related to the
+        research question
+        \item Selection of respondents is left to the researcher.
+    \end{itemize}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Poor sampling designs}
+    \begin{block}{Poor sampling designs $\Rightarrow$ bias}
+        \begin{itemize}
+            \item Convenience Sampling
+            \begin{itemize}
+                \item Using respondents how are willing
+                \item A sample based on using people who are easiliy accessible
+                such as mail intercepts or other high tracfic locations
+                \item may save time and cost
+            \end{itemize}
+            \item Judgement Sampling
+            \begin{itemize}
+                \item Selection based on the judgement of the researcher
+            \end{itemize}
+            \item Snowball Sampling
+            \begin{itemize}
+                \item Select initial respondents and ask them to nominate others
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    \begin{block}{Bias}
+        The design of a statistical study is biased if it systematically favors certain outcomes.
+    \end{block}
+\end{frame}
+%--- Next Frame ---%
+
 \begin{frame}[t]{Probability- or Non-Prbability-Sampling?}
+    % http://www.slideshare.net/krishna1988/sampling-techniques-market-research
     \begin{table}
         \centering
         \begin{tabular}{|c|c|c|}
             \hline
             Factors & Non-Probaility & Probaility \\
             \hline
-            \hline 
+            \hline
             Nature of research & Exploratory & Conclusive \\
             larger magniture of & Non-Sampling errors & Sampling errors \\
             Variability & Homogeneous (low) & Hectrogeneous (large) \\
@@ -341,12 +471,25 @@ sbalan@star.ucl.ac.uk}
 \end{frame}
 %--- Next Frame ---%
 
+\begin{frame}[t]{Selecting sampling method}
+    Consider
+    \begin{itemize}
+        \item Nature of the research problem
+        \item Objectives of the survey
+        \item Time
+        \item Budget
+        \item Resource constraints
+    \end{itemize}
+\end{frame}
+%--- Next Frame ---%
+
 \begin{frame}[t]{More information}
     \begin{enumerate}
         \small
         \item \url{http://lc.gcumedia.com/hlt362v/the-visual-learner/the-visual-learner-v2.1.html}
         \item  \url{http://carbonfinanceforcookstoves.org/implementation/certification-process/monitoring-and-evaluation/}
         %\item \url{https://scholar.vt.edu/access/content/group/43c8db00-e78f-4dcd-826c-ac236fb59e24/STAT3615/Sampling%20and%20Observational%20Studies.htm}
+        \item \url{http://www.slideshare.net/drkellypage/pagek-marketing-researchwk61}
     \end{enumerate}
 \end{frame}
 %--- Next Frame ---%
